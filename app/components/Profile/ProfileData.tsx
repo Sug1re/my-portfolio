@@ -4,6 +4,7 @@ import React from "react";
 import { Avatar, Box, Typography } from "@mui/material";
 import { useGitHubAvatar } from "../../hooks/useAvatar";
 import Button from "./Button";
+import { usePathname } from "next/navigation";
 
 const GITHUB_USERNAME = "Sug1re"; // あなたのGitHubユーザー名に変更
 
@@ -27,12 +28,13 @@ const styles = {
 
 const ProfileData = () => {
   const avatarUrl = useGitHubAvatar(GITHUB_USERNAME);
+  const pathname = usePathname();
 
   return (
     <>
       <Box
         sx={{
-          gap: 2,
+          gap: 1,
           display: "flex",
           flexDirection: {
             xs: "column",
@@ -67,7 +69,7 @@ const ProfileData = () => {
 
           <Typography sx={styles.sectionTitle}>所属</Typography>
           <Typography sx={styles.sectionText}>
-            学校法人角川ドワンゴ学園 S高等学校
+            学校法人角川ドワンゴ学園S高等学校
           </Typography>
 
           <Typography sx={styles.sectionTitle}>趣味</Typography>
@@ -76,9 +78,12 @@ const ProfileData = () => {
           </Typography>
         </Box>
 
-        <Box sx={{ mt: 2 }}>
-          <Button />
-        </Box>
+        {/* ルートパス "/" のときだけ表示 */}
+        {pathname === "/" && (
+          <Box sx={{ mt: 2 }}>
+            <Button />
+          </Box>
+        )}
       </Box>
     </>
   );

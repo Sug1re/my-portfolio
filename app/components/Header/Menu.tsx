@@ -1,11 +1,12 @@
-import { Box, Typography } from "@mui/material";
 import React from "react";
+import { Box } from "@mui/material";
+import DehazeIcon from "@mui/icons-material/Dehaze";
 
 const Menu = () => {
   return (
     <>
       <Box>
-        <Typography sx={{ mr: 1, color: "#000000" }}>Menu</Typography>
+        <DehazeIcon fontSize="medium" sx={{ mr: 1, color: "#000000" }} />
       </Box>
     </>
   );

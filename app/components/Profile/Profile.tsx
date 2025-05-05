@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { usePathname } from "next/navigation";
+import { Box, Card, Typography } from "@mui/material";
 import ProfileData from "./ProfileData";
 
 const Profile = () => {
@@ -18,7 +21,13 @@ const Profile = () => {
         </Typography>
       </Box>
 
-      <ProfileData />
+      {usePathname() === "/pages/profile" && (
+        <Card sx={{ mt: 2, pb: 2, border: "0.5px solid #003399" }}>
+          <ProfileData />
+        </Card>
+      )}
+
+      {usePathname() === "/" && <ProfileData />}
     </>
   );
 };
