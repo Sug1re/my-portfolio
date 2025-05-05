@@ -1,8 +1,8 @@
-import React from "react";
 import { Box, Typography } from "@mui/material";
-import ProfileData from "./ProfileData";
+import React from "react";
+import ProjectList from "./ProjectList";
 
-const Profile = () => {
+const MyProject = () => {
   return (
     <>
       <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -11,16 +11,17 @@ const Profile = () => {
             fontWeight: 600,
             fontSize: 20,
             ml: 1,
+            mt: 8,
             borderBottom: "1.5px solid #003399",
           }}
         >
-          Profile
+          Project
         </Typography>
       </Box>
 
-      <ProfileData />
+      <ProjectList />
     </>
   );
 };
 
-export default Profile;
+export default MyProject;
