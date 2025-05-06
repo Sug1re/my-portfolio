@@ -1,3 +1,9 @@
 body {
     overscroll-behavior: none; /* オーバースクロールを無効化 */
   }
+
+  a.reset-link {
+    all: unset;          /* 全てのスタイルを初期化（強力） */
+    display: inline-block; /* 必要なら表示方法を明示 */
+    width: 100%; /* 必要なら幅を指定 */
+  }
