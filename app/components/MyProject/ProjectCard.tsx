@@ -10,13 +10,7 @@ import {
 } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
-
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  language: string;
-  repoUrl: string;
-}
+import { ProjectCardProps } from "@/app/types/projectCard";
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
@@ -25,61 +19,63 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   repoUrl,
 }) => {
   return (
-    <Card
-      variant="outlined"
-      sx={{
-        mt: 2,
-        minWidth: 350,
-        border: "0.5px solid #003399",
-        borderRadius: 2,
-        boxShadow: 2,
-        transition: "transform 0.2s",
-        "&:hover": {
-          transform: "scale(1.05)",
-        },
-      }}
-    >
-      <CardContent>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            variant="h6"
-            component="div"
-            gutterBottom
+    <>
+      <Card
+        variant="outlined"
+        sx={{
+          mt: 2,
+          minWidth: 350,
+          border: "0.5px solid #003399",
+          borderRadius: 2,
+          boxShadow: 2,
+          transition: "transform 0.2s",
+          "&:hover": {
+            transform: "scale(1.05)",
+          },
+        }}
+      >
+        <CardContent>
+          <Box
             sx={{
-              fontWeight: 600,
-              color: "#003399",
               display: "flex",
-              alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
-            {title}
-          </Typography>
-          <CardActions>
-            <IconButton
-              component="a"
-              href={repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub Repository"
+            <Typography
+              variant="h6"
+              component="div"
+              gutterBottom
+              sx={{
+                fontWeight: 600,
+                color: "#003399",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
-              <NorthEastIcon />
-            </IconButton>
-          </CardActions>
-        </Box>
-        <Typography variant="body2" color="text.secondary" gutterBottom>
-          {description}
-        </Typography>
-        <Stack direction="row" spacing={1} alignItems="center" mt={1}>
-          <LanguageIcon fontSize="small" />
-          <Typography variant="body2">{language}</Typography>
-        </Stack>
-      </CardContent>
-    </Card>
+              {title}
+            </Typography>
+            <CardActions>
+              <IconButton
+                component="a"
+                href={repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Repository"
+              >
+                <NorthEastIcon />
+              </IconButton>
+            </CardActions>
+          </Box>
+          <Typography variant="body2" color="text.secondary" gutterBottom>
+            {description}
+          </Typography>
+          <Stack direction="row" spacing={1} alignItems="center" mt={1}>
+            <LanguageIcon fontSize="small" />
+            <Typography variant="body2">{language}</Typography>
+          </Stack>
+        </CardContent>
+      </Card>
+    </>
   );
 };
 

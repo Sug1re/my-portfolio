@@ -2,7 +2,7 @@ import { Box, Container } from "@mui/material";
 import Header from "./components/Header/Header";
 import Profile from "./components/Profile/Profile";
 import MyProject from "./components/MyProject/MyProject";
-import Skills from "./components/Skills/Skills";
+import Skill from "./components/Skill/Skill";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         <Box sx={{ mt: 10 }}>
           <Profile />
           <MyProject />
-          <Skills />
+          <Skill />
         </Box>
       </Container>
     </>

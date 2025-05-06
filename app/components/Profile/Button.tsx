@@ -20,6 +20,7 @@ const Button = () => {
         border: "0.5px solid #003399",
         px: 2,
         py: 1,
+        fontWeight: 600,
         transition: "transform 0.2s",
         "&:hover": {
           transform: "scale(1.05)",

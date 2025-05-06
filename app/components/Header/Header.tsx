@@ -1,12 +1,18 @@
+"use client";
+
 import React from "react";
 import Menu from "./Menu";
-import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/");
+  };
   return (
     <>
-      {/* farmer motionで無限に見てられるアニメーションを作成 */}
-      {/* ↑ここじゃない */}
       <AppBar>
         <Toolbar
           disableGutters
@@ -16,9 +22,21 @@ const Header = () => {
             backgroundColor: "#fff",
           }}
         >
-          <Typography sx={{ fontWeight: 600, ml: 1, color: "#000000" }}>
-            Sug1re.tsx
-          </Typography>
+          <Button
+            onClick={handleClick}
+            sx={{
+              textTransform: "none",
+              backgroundColor: "transparent",
+              ":hover": {
+                backgroundColor: "transparent",
+              },
+              boxShadow: "none",
+            }}
+          >
+            <Typography sx={{ fontWeight: 600, ml: 1, color: "#000000" }}>
+              Sug1re.tsx
+            </Typography>
+          </Button>
 
           <Box sx={{ flexGrow: 1 }}></Box>
 

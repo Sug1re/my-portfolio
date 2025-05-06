@@ -22,7 +22,7 @@ const styles = {
   sectionText: {
     fontWeight: 500,
     fontSize: 15,
-    color: "#3366cc",
+    color: " #99ccff",
   },
 };
 
