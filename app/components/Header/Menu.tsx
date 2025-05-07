@@ -63,7 +63,6 @@ const Menu = () => {
           <ListItem key={index} disablePadding sx={{ width: "100%" }}>
             <a
               href={page.link}
-              target="_blank"
               rel="noopener noreferrer"
               className="reset-link"
             >

@@ -14,6 +14,7 @@ const Profile = () => {
             fontWeight: 600,
             fontSize: 20,
             ml: 1,
+            mt: 8,
             borderBottom: "1.5px solid #003399",
           }}
         >
