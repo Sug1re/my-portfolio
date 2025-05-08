@@ -11,15 +11,20 @@ const ESG = () => {
   const [pathIndex, setPathIndex] = useState(0);
   const lastTriggeredRef = useRef(false);
 
+  const svgWidthPx = 800; // ESGのBoxの実幅
+  const viewBoxWidth = 5000; // SVGのviewBox幅
+
+  const convertPxToViewBox = (px: number) => (px / svgWidthPx) * viewBoxWidth;
+
   const handleLoopUpdate = (x: number) => {
-    // 1200px通過で波形切り替え、1回のみ実行
-    if (x >= 1195 && x <= 1205) {
+    const viewBoxX = convertPxToViewBox(x);
+
+    if (viewBoxX >= 4800 && viewBoxX <= 5000) {
       if (!lastTriggeredRef.current) {
         setPathIndex((prev) => (prev + 1) % waveformPaths.length);
         lastTriggeredRef.current = true;
       }
     } else {
-      // 範囲外に出たらリセット
       lastTriggeredRef.current = false;
     }
   };
@@ -27,11 +32,12 @@ const ESG = () => {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: 800,
         height: 200,
-        overflow: "hidden",
+        // overflow: "hidden",
         backgroundColor: "black",
-        borderRadius: 2,
+        borderTopLeftRadius: "8px",
+        borderBottomLeftRadius: "8px",
         position: "relative",
       }}
     >
@@ -41,7 +47,7 @@ const ESG = () => {
         style={{
           position: "absolute",
           top: 0,
-          left: 0,
+          left: 40,
           width: "100%",
           height: "100%",
           stroke: "#003399",

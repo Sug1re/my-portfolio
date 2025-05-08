@@ -26,16 +26,16 @@ const LoopBar = ({ onUpdate }: Props) => {
       sx={{
         width: 20,
         height: 200,
-        backgroundColor: "#000000",
+        backgroundColor: "#003399",
         borderRadius: 2,
         position: "absolute",
-        left: 0,
+        left: 40,
       }}
-      animate={{ x: [0, 2400] }}
+      animate={{ x: [0, 800] }}
       transition={{
-        duration: 10,
-        ease: "linear",
-        repeat: Infinity,
+        duration: 8,
+        ease: "linear", // 等速
+        repeat: Infinity, // 無限ループ
       }}
       style={{ x }}
     />

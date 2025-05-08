@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import ESG from "./ESG";
+import Monitor from "./Monitor";
 
 const Animation = () => {
   return (
@@ -13,6 +14,7 @@ const Animation = () => {
         }}
       >
         <ESG />
+        <Monitor />
       </Box>
     </>
   );

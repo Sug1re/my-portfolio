@@ -1,33 +1,59 @@
 export const waveformPaths = [
-    // 任意の複数波形パターン（複雑なものは省略）
-    "M 0 100 L 100 80 L 200 120 L 300 100 L 400 100",
+    // 他の波形...
     `M 0 100
-       L 50 100 L 60 80 L 70 120 L 80 100
-       L 150 100 L 160 60 L 170 140 L 180 100
-       L 230 100 L 240 80 L 250 120 L 260 100
-       L 330 100 L 340 60 L 350 140 L 360 100
-       L 410 100 L 420 80 L 430 120 L 440 100
-       L 510 100 L 520 60 L 530 140 L 540 100
-       L 590 100 L 600 80 L 610 120 L 620 100
-       L 690 100 L 700 60 L 710 140 L 720 100
-       L 770 100 L 780 80 L 790 120 L 800 100
-       L 870 100 L 880 60 L 890 140 L 900 100
-       L 950 100 L 960 80 L 970 120 L 980 100
-       L 1050 100 L 1060 60 L 1070 140 L 1080 100
-       L 1150 100 L 1160 80 L 1170 120 L 1180 100
-       L 1250 100 L 1260 60 L 1270 140 L 1280 100
-       L 1330 100 L 1340 80 L 1350 120 L 1360 100
-       L 1430 100 L 1440 60 L 1450 140 L 1460 100
-       L 1510 100 L 1520 80 L 1530 120 L 1540 100
-       L 1610 100 L 1620 60 L 1630 140 L 1640 100
-       L 1690 100 L 1700 80 L 1710 120 L 1720 100
-       L 1790 100 L 1800 60 L 1810 140 L 1820 100
-       L 1870 100 L 1880 80 L 1890 120 L 1900 100
-       L 1970 100 L 1980 60 L 1990 140 L 2000 100
-       L 2050 100 L 2060 80 L 2070 120 L 2080 100
-       L 2150 100 L 2160 60 L 2170 140 L 2180 100
-       L 2230 100 L 2240 80 L 2250 120 L 2260 100
-       L 2330 100 L 2340 60 L 2350 140 L 2360 100
-       L 2410 100 L 2420 80 L 2430 120 L 2440 100
-       L 2510 100 L 2520 60 L 2530 140 L 2540 100`
+       ${Array.from({ length: 100 }, (_, i) => {
+         const x = i * 50;
+         if (i % 10 === 5) {
+           // 細かい揺れ
+           return `
+             L ${x} 100 L ${x + 5} 80 L ${x + 10} 120 L ${x + 15} 100
+             L ${x + 20} 80 L ${x + 25} 120 L ${x + 30} 100 L ${x + 35} 90 L ${x + 40} 110 L ${x + 45} 100`;
+         } else if (i % 4 === 0) {
+           // 大波
+           return `L ${x} 100 L ${x + 10} 60 L ${x + 20} 140 L ${x + 30} 100 L ${x + 40} 70 L ${x + 50} 130`;
+         } else {
+           // 小波
+           return `L ${x} 100 L ${x + 10} 80 L ${x + 20} 120 L ${x + 30} 100 L ${x + 40} 90 L ${x + 50} 110`;
+         }
+       }).join('')}
+    `,
+    `M 0 100
+     ${Array.from({ length: 100 }, (_, i) => {
+       const x = i * 50;
+       const heightBase = 100;
+       const amplitude = 20 + 40 * Math.abs(Math.sin((Math.PI * i) / 50)); // 山の高さに周期性を持たせる
+
+       // リズミカルにパルス波を織り交ぜ
+       if (i % 8 === 2) {
+         return `
+           L ${x} ${heightBase}
+           L ${x + 10} ${heightBase - amplitude}
+           L ${x + 20} ${heightBase + amplitude}
+           L ${x + 30} ${heightBase}
+           L ${x + 40} ${heightBase - amplitude}
+           L ${x + 50} ${heightBase}
+         `;
+       } else if (i % 10 === 7) {
+         return `
+           L ${x} ${heightBase}
+           L ${x + 5} ${heightBase - 10}
+           L ${x + 10} ${heightBase + 10}
+           L ${x + 15} ${heightBase - 10}
+           L ${x + 20} ${heightBase + 10}
+           L ${x + 25} ${heightBase}
+           L ${x + 30} ${heightBase - 15}
+           L ${x + 35} ${heightBase + 15}
+           L ${x + 40} ${heightBase}
+           L ${x + 45} ${heightBase - 10}
+           L ${x + 50} ${heightBase}
+         `;
+       } else {
+         return `
+           L ${x} ${heightBase}
+           L ${x + 25} ${heightBase - amplitude}
+           L ${x + 50} ${heightBase}
+         `;
+       }
+     }).join('')}
+  `
   ];
