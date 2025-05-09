@@ -15,7 +15,7 @@ const LoopBar = () => {
         position: "absolute",
         left: 0,
       }}
-      animate={{ left: ["0%", "75%"] }}
+      animate={{ left: ["0%", "70%"] }}
       transition={{
         duration: 8,
         ease: "linear", // 等速
