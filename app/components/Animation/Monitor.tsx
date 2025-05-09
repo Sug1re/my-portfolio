@@ -7,12 +7,14 @@ const Monitor = () => {
     <>
       <Box
         sx={{
-          width: 160,
-          height: 200,
+          width: "20%",
+          height: "100%",
           backgroundColor: "black",
           borderTopRightRadius: 8,
           borderBottomRightRadius: 8,
-          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-around",
         }}
       >
         <TextData />

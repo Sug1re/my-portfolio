@@ -1,43 +1,26 @@
-"use client";
-
-import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { Box } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 
 const MotionBox = motion(Box);
 
-type Props = {
-  onUpdate: (x: number) => void;
-};
-
-const LoopBar = ({ onUpdate }: Props) => {
-  const x = useMotionValue(0);
-
-  useAnimationFrame(() => {
-    onUpdate(x.get()); // 現在のX位置をESGに通知
-  });
-
-  useEffect(() => {
-    x.set(0); // 初期位置リセット
-  }, [x]);
-
+const LoopBar = () => {
   return (
     <MotionBox
       sx={{
-        width: 20,
-        height: 200,
+        width: "5%",
+        height: "100%",
         backgroundColor: "#000000",
         borderRadius: 2,
         position: "absolute",
-        left: 40,
+        left: 0,
       }}
-      animate={{ x: [0, 800] }}
+      animate={{ left: ["0%", "75%"] }}
       transition={{
         duration: 8,
         ease: "linear", // 等速
         repeat: Infinity, // 無限ループ
       }}
-      style={{ x }}
     />
   );
 };

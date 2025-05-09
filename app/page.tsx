@@ -8,10 +8,12 @@ import Animation from "./components/Animation/Animation";
 export default function Home() {
   return (
     <>
+      <Header />
+
+      <Animation />
+
       <Container maxWidth="lg">
-        <Header />
         <Box sx={{ my: 10 }}>
-          <Animation />
           <Profile />
           <MyProject />
           <Skill />

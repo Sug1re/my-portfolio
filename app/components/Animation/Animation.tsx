@@ -10,7 +10,12 @@ const Animation = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          mt: 10,
+          width: "full",
+          height: 300,
+          backgroundColor: "#000000",
+          borderRadius: 2,
+          position: "relative",
         }}
       >
         <ESG />
