@@ -1,31 +1,50 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box } from "@mui/material";
 import LoopBar from "./LoopBar";
 import Waveform from "./Waveform";
 import Square from "./Square";
 import { waveformPaths } from "@/app/data/waveformPaths";
 
+const NUM_SEGMENTS = 10;
+const SEGMENT_DURATION = 2000;
+
 const ESG = () => {
-  const [pathIndex, setPathIndex] = useState(0);
-  const lastTriggeredRef = useRef(false);
+  const [waveformSegments, setWaveformSegments] = useState<string[]>(() =>
+    Array.from({ length: NUM_SEGMENTS }, (_, i) => waveformPaths(i))
+  );
 
-  const svgWidthPx = 800; // ESGのBoxの実幅
-  const viewBoxWidth = 5000; // SVGのviewBox幅
+  const segmentIndexRef = useRef(0);
 
-  const convertPxToViewBox = (px: number) => (px / svgWidthPx) * viewBoxWidth;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const i = segmentIndexRef.current;
+
+      setWaveformSegments((prev) => {
+        const newSegments = [...prev];
+        newSegments[i] = waveformPaths(i);
+        return newSegments;
+      });
+
+      segmentIndexRef.current = (i + 1) % NUM_SEGMENTS;
+    }, SEGMENT_DURATION);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLoopUpdate = (x: number) => {
-    const viewBoxX = convertPxToViewBox(x);
+    const segmentWidthPx = 800 / NUM_SEGMENTS; // 80px
+    const segmentIndex = Math.floor(x / segmentWidthPx);
 
-    if (viewBoxX >= 4800 && viewBoxX <= 5000) {
-      if (!lastTriggeredRef.current) {
-        setPathIndex((prev) => (prev + 1) % waveformPaths.length);
-        lastTriggeredRef.current = true;
-      }
-    } else {
-      lastTriggeredRef.current = false;
+    if (segmentIndex !== segmentIndexRef.current) {
+      segmentIndexRef.current = segmentIndex;
+
+      setWaveformSegments((prev) => {
+        const newSegments = [...prev];
+        newSegments[segmentIndex] = waveformPaths(segmentIndex);
+        return newSegments;
+      });
     }
   };
 
@@ -34,10 +53,9 @@ const ESG = () => {
       sx={{
         width: 800,
         height: 200,
-        // overflow: "hidden",
         backgroundColor: "black",
-        borderTopLeftRadius: "8px",
-        borderBottomLeftRadius: "8px",
+        borderTopLeftRadius: 8,
+        borderBottomLeftRadius: 8,
         position: "relative",
       }}
     >
@@ -56,7 +74,7 @@ const ESG = () => {
         }}
       >
         <Square />
-        <Waveform path={waveformPaths[pathIndex]} />
+        <Waveform segments={waveformSegments} />
       </svg>
       <LoopBar onUpdate={handleLoopUpdate} />
     </Box>

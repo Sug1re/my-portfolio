@@ -36,6 +36,15 @@ export const skills = [
       level: 2,
     },
     {
+      src: "/nextjs.svg",
+      alt: "Next.js",
+      width: 100,
+      height: 100,
+      tag: "Library",
+      tag2: "Frontend",
+      level: 4,
+    },
+    {
       src: "/framer.svg",
       alt: "Framer Motion",
       width: 100,

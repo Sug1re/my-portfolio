@@ -26,7 +26,7 @@ const LoopBar = ({ onUpdate }: Props) => {
       sx={{
         width: 20,
         height: 200,
-        backgroundColor: "#003399",
+        backgroundColor: "#000000",
         borderRadius: 2,
         position: "absolute",
         left: 40,

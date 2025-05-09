@@ -7,11 +7,11 @@ const Monitor = () => {
     <>
       <Box
         sx={{
-          width: "160px",
+          width: 160,
           height: 200,
           backgroundColor: "black",
-          borderTopRightRadius: "8px",
-          borderBottomRightRadius: "8px",
+          borderTopRightRadius: 8,
+          borderBottomRightRadius: 8,
           position: "relative",
         }}
       >

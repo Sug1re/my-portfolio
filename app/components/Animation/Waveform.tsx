@@ -1,14 +1,14 @@
-import React from "react";
-
-type WaveformProps = {
-  path: string;
+type Props = {
+  segments: string[];
 };
-const Waveform = ({ path }: WaveformProps) => {
+
+const Waveform = ({ segments }: Props) => {
   return (
     <>
       {/* 波形 */}
-      {/* viewBox と関連する */}
-      <path d={path} />
+      {segments.map((d, i) => (
+        <path key={i} d={d} />
+      ))}
     </>
   );
 };
