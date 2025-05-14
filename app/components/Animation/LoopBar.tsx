@@ -17,7 +17,7 @@ const LoopBar = () => {
       }}
       animate={{ left: ["0%", "70%"] }}
       transition={{
-        duration: 8,
+        duration: 10,
         ease: "linear", // 等速
         repeat: Infinity, // 無限ループ
       }}
