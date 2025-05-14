@@ -24,7 +24,7 @@ const TextData: React.FC = () => {
     };
 
     updateVitals(); // 初回
-    const interval = setInterval(updateVitals, 3000);
+    const interval = setInterval(updateVitals, 2500);
 
     return () => clearInterval(interval);
   }, []);

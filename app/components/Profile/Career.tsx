@@ -1,5 +1,10 @@
+"use client";
+
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import { motion } from "framer-motion";
+
+const MotionBox = motion(Box);
 
 const experiences = [
   {
@@ -23,51 +28,61 @@ const experiences = [
 const Career = () => {
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Typography
-          sx={{
-            fontWeight: 600,
-            fontSize: 20,
-            ml: 1,
-            mt: 8,
-            borderBottom: "1.5px solid #003399",
-          }}
-        >
-          Career
-        </Typography>
-      </Box>
-
-      <Box
-        sx={{
-          position: "relative",
-          mt: 2,
-          ml: 2,
-          pl: 6,
-          borderLeft: "6px solid #003399",
+      <MotionBox
+        initial={{ y: 28, opacity: 0 }} //初期状態：に下16px、透明
+        whileInView={{ y: 0, opacity: 1 }} //アニメーション後：元の位置、完全に表示
+        transition={{
+          duration: 2.5,
+          delay: 0.75,
+          ease: [0.87, 0.6, 0.2, 1],
         }}
       >
-        {experiences.map((exp, index) => (
-          <Box key={index} sx={{ position: "relative", pb: 4 }}>
-            <Box
-              sx={{
-                position: "absolute",
-                left: -63,
-                top: 4,
-                width: 24,
-                height: 24,
-                backgroundColor: "#003399",
-                borderRadius: "50%",
-              }}
-            />
-            <Box>
-              <Typography sx={{ fontWeight: 500 }}>{exp.year}</Typography>
-              <Typography sx={{ fontSize: 16, fontWeight: 600 }}>
-                {exp.title}
-              </Typography>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Typography
+            sx={{
+              fontWeight: 600,
+              fontSize: 20,
+              ml: 1,
+              mt: 8,
+              borderBottom: "1.5px solid #003399",
+            }}
+          >
+            Career
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            position: "relative",
+            mt: 2,
+            ml: 2,
+            pl: 6,
+            borderLeft: "6px solid #003399",
+          }}
+        >
+          {experiences.map((exp, index) => (
+            <Box key={index} sx={{ position: "relative", pb: 4 }}>
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: -63,
+                  top: 4,
+                  width: 24,
+                  height: 24,
+                  backgroundColor: "#003399",
+                  borderRadius: "50%",
+                }}
+              />
+              <Box>
+                <Typography sx={{ fontWeight: 500 }}>{exp.year}</Typography>
+                <Typography sx={{ fontSize: 16, fontWeight: 600 }}>
+                  {exp.title}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-        ))}
-      </Box>
+          ))}
+        </Box>
+      </MotionBox>
     </>
   );
 };
