@@ -4,8 +4,12 @@ import React from "react";
 import { Box } from "@mui/material";
 import LoopBar from "./LoopBar";
 import Square from "./Square";
+import Waveform from "./Waveform";
+import { waveformPaths } from "@/app/data/waveformPaths";
 
 const ESG = () => {
+  // セグメント数（波形の個数）を必要に応じて調整
+  const segments = Array.from({ length: 8 }, (_, i) => waveformPaths(i));
   return (
     <Box sx={{ width: "75%", height: "100%" }}>
       <svg
@@ -23,6 +27,8 @@ const ESG = () => {
         }}
       >
         <Square />
+
+        <Waveform segments={segments} />
       </svg>
       <LoopBar />
     </Box>

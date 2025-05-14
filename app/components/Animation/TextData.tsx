@@ -1,7 +1,43 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+"use client";
 
-const TextData = () => {
+import { hrData, bpData, spo2Data, eto2Data } from "@/app/data/vitalsData";
+import { Vitals } from "@/app/types/vitals";
+import { Box, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+
+const getRandomValue = <T,>(arr: T[]): T => {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+};
+
+const TextData: React.FC = () => {
+  const [currentVitals, setCurrentVitals] = useState<Vitals | null>(null);
+
+  useEffect(() => {
+    const updateVitals = () => {
+      setCurrentVitals({
+        hr: getRandomValue(hrData),
+        bp: getRandomValue(bpData),
+        spo2: getRandomValue(spo2Data),
+        eto2: getRandomValue(eto2Data),
+      });
+    };
+
+    updateVitals(); // 初回
+    const interval = setInterval(updateVitals, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!currentVitals) {
+    // 初期ロード時のプレースホルダー表示（任意）
+    return (
+      <>
+        <Typography>...</Typography>
+      </>
+    );
+  }
+
   return (
     <>
       <Box
@@ -23,7 +59,7 @@ const TextData = () => {
             whiteSpace: "nowrap",
           }}
         >
-          72
+          {currentVitals.hr}
         </Typography>
       </Box>
       <Box
@@ -46,7 +82,7 @@ const TextData = () => {
             whiteSpace: "nowrap",
           }}
         >
-          100/80
+          {currentVitals.bp}
         </Typography>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", mx: 1 }}>
@@ -63,7 +99,7 @@ const TextData = () => {
             whiteSpace: "nowrap",
           }}
         >
-          100
+          {currentVitals.spo2}
         </Typography>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", mx: 1 }}>
@@ -80,7 +116,7 @@ const TextData = () => {
             whiteSpace: "nowrap",
           }}
         >
-          40.0
+          {currentVitals.eto2}
         </Typography>
       </Box>
     </>
