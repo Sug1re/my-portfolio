@@ -1,6 +1,8 @@
+"use client";
+
+import React from "react";
 import { motion } from "framer-motion";
 import { Box } from "@mui/material";
-import React from "react";
 
 const MotionBox = motion(Box);
 
@@ -17,7 +19,7 @@ const LoopBar = () => {
       }}
       animate={{ left: ["0%", "70%"] }}
       transition={{
-        duration: 10,
+        duration: 11.2,
         ease: "linear", // 等速
         repeat: Infinity, // 無限ループ
       }}

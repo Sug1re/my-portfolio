@@ -1,14 +1,45 @@
 export const waveformPaths = (segmentIndex: number): string => {
-  const startX = segmentIndex * 360; // 1セグメント分の幅（この場合260）
-  const path =
-    `L ${startX + 100} 100 ` +  // 安定
-    `L ${startX + 120} 90 ` +   // 少し下降
-    `L ${startX + 150} 110 ` +  // 急上昇（スパイク前）
-    `L ${startX + 175} 50 ` +   // 鋭く頂点（スパイク）
-    `L ${startX + 190} 110 ` +  // 急降下
-    `L ${startX + 210} 95 ` +   // 少し戻す
-    `L ${startX + 240} 100 ` +  // 基線に復帰
-    `L ${startX + 360} 100`;    // 安定（次の波に向け余白）
+  const startX = segmentIndex * 260;
+
+  const patterns = [
+    // パターン1: スパイク型
+    `L ${startX + 100} 100 ` +
+      `L ${startX + 120} 90 ` +
+      `L ${startX + 150} 110 ` +
+      `L ${startX + 175} 50 ` +
+      `L ${startX + 190} 110 ` +
+      `L ${startX + 210} 95 ` +
+      `L ${startX + 240} 100 ` +
+      `L ${startX + 260} 100`,
+
+    // パターン2: 深い谷型
+    `L ${startX + 80} 100 ` +
+      `L ${startX + 100} 80 ` +
+      `L ${startX + 120} 60 ` +
+      `L ${startX + 140} 100 ` +
+      `L ${startX + 160} 130 ` +
+      `L ${startX + 180} 100 ` +
+      `L ${startX + 200} 85 ` +
+      `L ${startX + 230} 100 ` +
+      `L ${startX + 260} 100`,
+
+    //   // パターン3: 水平
+    // `L ${startX + 80} 100 ` +
+    //   `L ${startX + 260} 100`,
+
+      // パターン4: 小スパイク型
+    `L ${startX + 100} 100 ` +
+      `L ${startX + 120} 95 ` +
+      `L ${startX + 150} 105 ` +
+      `L ${startX + 175} 65 ` +
+      `L ${startX + 190} 105 ` +
+      `L ${startX + 210} 100 ` +
+      `L ${startX + 225} 95 ` +
+      `L ${startX + 260} 100`,
+  ];
+
+  // ランダムにパターンを選択
+  const path = patterns[Math.floor(Math.random() * patterns.length)];
 
   return `M ${startX} 100 ${path}`;
 };

@@ -1,15 +1,11 @@
-"use client";
-
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import { motion } from "framer-motion";
-
-const MotionBox = motion(Box);
+import MotionBoxWrapper from "../Common/MotionBox";
 
 const MoreProfile = () => {
   return (
     <>
-      <MotionBox
+      <MotionBoxWrapper
         initial={{ y: 28, opacity: 0 }} //初期状態：に下16px、透明
         whileInView={{ y: 0, opacity: 1 }} //アニメーション後：元の位置、完全に表示
         transition={{
@@ -46,7 +42,7 @@ const MoreProfile = () => {
           <br />
           英語でフィンランド語を勉強しています。（英語は苦手）
         </Typography>
-      </MotionBox>
+      </MotionBoxWrapper>
     </>
   );
 };
