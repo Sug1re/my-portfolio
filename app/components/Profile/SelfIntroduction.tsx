@@ -40,7 +40,7 @@ const MoreProfile = () => {
           <br />
           全日制の高校を中退して通信制の高校に通っています。
           <br />
-          英語でフィンランド語を勉強しています。（英語は苦手）
+          フィンランド語を勉強中です。
         </Typography>
       </MotionBoxWrapper>
     </>
